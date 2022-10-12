@@ -15,14 +15,13 @@ pipeline {
         }
         
              stage('Test') {
-            steps {
-                sh 'cd SampleWebApp && mvn test'
+                 steps {
+                   sh 'cd SampleWebApp && mvn test'
             }
         
             }
         stage('Code Qualty Scan') {
-
-           steps {
+            steps {
                   withSonarQubeEnv('sonar-server') {
              sh "mvn -f SampleWebApp/pom.xml sonar:sonar"      
                }
