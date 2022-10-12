@@ -24,7 +24,7 @@ pipeline {
 
            steps {
                   withSonarQubeEnv('Sona_server') {
-             sh "mvn -f SampleWebApp/pom.xml sonar:sonar"      
+             sh "mvn -f SampleWebApp/pom.xml/sonar:sonar"      
                }
             }
        }
@@ -35,7 +35,7 @@ pipeline {
         }
         stage('push to nexus') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'SampleWebApp', classifier: '', file: 'SampleWebApp/target/SampleWebApp.war', type: 'war']], credentialsId: 'Nexus', groupId: 'SampleWebApp', nexusUrl: 'http://52.207.107.1:8081/', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0-SNAPSHOT'
+                nexusArtifactUploader artifacts: [[artifactId: 'SampleWebApp', classifier: '', file: 'SampleWebApp/target/SampleWebApp.war', type: 'war']], credentialsId: 'Nexus', groupId: 'SampleWebApp', nexusUrl: '52.207.107.1:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0-SNAPSHOT'
                 
             }
             
