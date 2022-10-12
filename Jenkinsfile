@@ -24,7 +24,7 @@ pipeline {
 
            steps {
                   withSonarQubeEnv('Sona_server') {
-             sh "mvn -f SampleWebApp/pom.xml/sonar:sonar"      
+             sh "mvn -f SampleWebApp/pom.xml sonar:sonar"      
                }
             }
        }
